@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoteSphere - Admin Console</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="main-header admin-header">
+            <div class="logo">
+                <span class="logo-icon">⚙️</span>
+                <h1>Admin Dashboard</h1>
+            </div>
+            <button id="adminLogoutBtn" class="btn btn-outline-light" style="display: none;">Logout</button>
+        </header>
+
+        <div id="adminLoginSection" class="login-wrapper">
+            <div class="glass-card login-card">
+                <h2>🔐 Admin Access</h2>
+                <form id="adminLoginForm">
+                    <div class="input-group">
+                        <label>Username</label>
+                        <input type="text" id="adminUsername" placeholder="admin" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Password</label>
+                        <input type="password" id="adminPassword" placeholder="••••••" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full">Sign In</button>
+                </form>
+                <div id="loginError" class="error-message"></div>
+            </div>
+        </div>
+
+        <div id="adminDashboard" style="display: none;">
+            <!-- Active County Selection -->
+            <section class="dashboard-card glass-card admin-section-spacing">
+                <h2>📍 Set Active County for Voting</h2>
+                <div class="active-county-panel">
+                    <div class="county-select-wrapper">
+                        <select id="activeCountySelect" class="county-select">
+                            <option value="">Loading counties...</option>
+                        </select>
+                        <span class="select-chevron">▾</span>
+                    </div>
+                    <button id="setActiveCountyBtn" class="btn btn-primary">✅ Set Active County</button>
+                    <div id="currentActiveCountyDisplay" class="current-active-badge"></div>
+                </div>
+                <p class="info-note">All votes cast from now on will be recorded under the selected county.</p>
+            </section>
+
+            <!-- Manage Contenders -->
+            <section class="dashboard-card glass-card admin-section-spacing">
+                <h2>➕ Manage Contenders</h2>
+                <div class="add-contender-form">
+                    <input type="text" id="newContenderName" placeholder="Full name" class="form-input">
+                    <input type="text" id="newContenderDesc" placeholder="Slogan / description" class="form-input">
+                    <div class="photo-upload-row">
+                        <div class="photo-upload-preview-wrap">
+                            <img id="addPhotoPreview" class="photo-preview-sm" style="display: none;" alt="Preview">
+                        </div>
+                        <div class="photo-upload-controls">
+                            <label class="btn btn-secondary photo-upload-label" for="addPhotoInput">📷 Upload Photo</label>
+                            <input type="file" id="addPhotoInput" accept="image/jpeg,image/png,image/webp,image/gif" style="display:none">
+                            <button type="button" id="clearAddPhotoBtn" class="btn btn-outline-dark" style="padding:0.4rem 1rem;">✖ Clear</button>
+                        </div>
+                        <span class="photo-hint">Max 5MB · JPG, PNG, WebP, GIF</span>
+                    </div>
+                    <button id="addContenderBtn" class="btn btn-success">➕ Add Contender</button>
+                </div>
+                <div id="contendersAdminList" class="contenders-admin-list"></div>
+            </section>
+
+            <!-- Voting Results Filter -->
+            <section class="dashboard-card glass-card">
+                <h2>📊 Voting Results by County</h2>
+                <div class="county-filter-bar">
+                    <label class="county-filter-label">
+                        <span>📍</span> Filter Results by County
+                    </label>
+                    <div class="county-select-wrapper">
+                        <select id="adminCountyFilter" class="county-select">
+                            <option value="all">🇰🇪 All Counties (National)</option>
+                        </select>
+                        <span class="select-chevron">▾</span>
+                    </div>
+                    <button id="refreshResultsBtn" class="btn btn-secondary" style="margin-left: auto;">⟳ Refresh</button>
+                </div>
+                <div id="adminResultsContainer" class="results-table"></div>
+                <div class="admin-actions">
+                    <button id="resetAllVotesBtn" class="btn btn-danger">⚠️ Reset All Votes</button>
+                </div>
+            </section>
+        </div>
+        <footer class="main-footer">
+            <p>🔒 Secure admin zone — Set active county, manage contenders, monitor votes</p>
+        </footer>
+    </div>
+    <div id="toastContainer" class="toast-container"></div>
+    <script src="script.js"></script>
+</body>
+</html>

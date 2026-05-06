@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>User Voting</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="main-header">
+            <div class="logo">
+                <span class="logo-icon">🗳️</span>
+                <h1>2027 PRESIDENTIAL VOTING</h1>
+            </div>
+            <p class="tagline">Cast your vote for the future of KENYA</p>
+        </header>
+
+        <main class="voting-main">
+            <section class="voting-card glass-card">
+                <h2>📢 Select Your Candidate</h2>
+                <form id="voteForm">
+                    <div id="contendersList" class="contenders-grid">
+                        <div class="loading-placeholder">Loading candidates...</div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" id="submitVoteBtn" class="btn btn-primary btn-lg">✅ Cast Your Vote</button>
+                        <button type="button" id="viewResultsBtn" class="btn btn-secondary btn-lg">📊 View Live Results</button>
+                    </div>
+                </form>
+                <div id="voteStatusMessage" class="status-message"></div>
+            </section>
+
+            <section class="results-card glass-card" id="resultsSection">
+                <h2>📈 Current Standings</h2>
+                <div id="liveResultsContainer" class="results-container">
+                    <div class="placeholder-text">Click "View Live Results" or vote to see statistics</div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="main-footer">
+            <p>⚡ One vote per session — Every voice matters.</p>
+        </footer>
+    </div>
+
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

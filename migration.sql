@@ -1,0 +1,1 @@
+ALTER TABLE contenders ADD COLUMN photo LONGTEXT DEFAULT NULL AFTER description;
