@@ -1,8 +1,6 @@
-﻿FROM php:7.4-apache
-RUN a2dismod mpm_event && a2enmod mpm_prefork
+﻿FROM php:7.4-cli
 RUN docker-php-ext-install pdo_mysql
-RUN a2enmod rewrite
-COPY . /var/www/html/
-RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
-EXPOSE 80
-CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+COPY . /app
+WORKDIR /app
+EXPOSE 8080
+CMD ["php", "-S", "0.0.0.0:8080", "-t", "/app"]
