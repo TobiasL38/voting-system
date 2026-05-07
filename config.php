@@ -1,9 +1,9 @@
 <?php
-$host = getenv('DB_HOST') ?: 'localhost';
+$host = getenv('DB_HOST') ?: 'mysql.railway.internal';
 $port = getenv('DB_PORT') ?: '3306';
-$dbname = getenv('DB_NAME') ?: 'voting_app';
+$dbname = getenv('DB_NAME') ?: 'railway';
 $username = getenv('DB_USER') ?: 'root';
-$password = getenv('DB_PASSWORD') ?: '';
+$password = getenv('DB_PASSWORD') ?: 'AsLtQGsoIpLtfEvibymVicXdzPBqmyrp';
 
 $dsn = "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4";
 
